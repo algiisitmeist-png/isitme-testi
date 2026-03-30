@@ -15,8 +15,8 @@ header{background:#fff;border-bottom:3px solid var(--red);padding:0 32px;height:
 .phone-link:hover{color:var(--red)}
 .progress-wrap{background:var(--border);height:3px}
 .progress-fill{height:3px;background:var(--red);transition:width .5s ease;width:0%}
-main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:48px 20px}
-.screen{display:none;width:100%;max-width:680px}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px}
+.screen{display:none;width:100%;max-width:700px}
 .screen.active{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .card{background:#fff;border-radius:16px;padding:44px 48px;box-shadow:0 4px 32px rgba(0,0,0,.07);border:1px solid var(--border)}
@@ -30,7 +30,7 @@ p{color:var(--gray-mid);line-height:1.75;font-size:15px;margin-bottom:14px}
 .checklist{list-style:none;margin:22px 0;display:flex;flex-direction:column;gap:11px}
 .checklist li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--gray)}
 .chk{width:26px;height:26px;border-radius:50%;background:var(--red-light);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:1.5px solid #f0c0c0}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:8px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:8px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
 .btn-red{background:var(--red);color:#fff}
 .btn-red:hover{background:var(--red-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(204,30,30,.3)}
 .btn-outline{background:#fff;color:var(--gray-mid);border:1.5px solid var(--border)}
@@ -51,53 +51,66 @@ input:focus,select:focus{border-color:var(--red)}
 .radio-opt.sel .r-circle::after{content:'';width:6px;height:6px;border-radius:50%;background:#fff}
 .info-box{background:#fff8f8;border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;font-size:13px;color:var(--gray-mid);line-height:1.65;margin:16px 0}
 
-/* ── TEST EKRANI ── */
-.ear-row{display:flex;gap:10px;margin:20px 0}
+/* ════ KULAKLÍK SEÇİM EKRANI ════ */
+.hp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.hp-card{border:2.5px solid var(--border);border-radius:14px;padding:20px 16px;cursor:pointer;text-align:center;transition:all .25s;background:#fff;position:relative}
+.hp-card:hover{border-color:var(--red);background:var(--red-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(204,30,30,.12)}
+.hp-card.sel{border-color:var(--red);background:var(--red-light);box-shadow:0 6px 20px rgba(204,30,30,.15)}
+.hp-card.sel::after{content:'✓';position:absolute;top:10px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:22px}
+.hp-svg-wrap{margin:0 auto 12px;display:flex;justify-content:center;align-items:center;height:90px}
+.hp-title{font-size:13px;font-weight:700;color:var(--gray);margin-bottom:4px}
+.hp-sub{font-size:11px;color:var(--gray-mid);line-height:1.5}
+.hp-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:6px}
+.hp-badge.good{background:var(--success-light);color:var(--success)}
+.hp-badge.ok{background:#e8f4fd;color:#1565a0}
+.hp-badge.fair{background:#fff3e0;color:#b26a00}
+
+/* ════ TEST EKRANI ════ */
+.ear-row{display:flex;gap:10px;margin:18px 0}
 .ear-btn{flex:1;padding:14px;border-radius:10px;border:2px solid var(--border);background:#fff;text-align:center;pointer-events:none}
 .ear-btn.active{border-color:var(--red);background:var(--red-light)}
 .ear-icon{font-size:26px;margin-bottom:4px}
 .ear-label{font-size:13px;font-weight:600}
-.freq-display{text-align:center;margin:24px 0 8px}
+.freq-display{text-align:center;margin:20px 0 8px}
 .freq-label-sm{font-size:11px;color:var(--gray-mid);margin-bottom:6px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 .freq-value{font-family:'Montserrat',sans-serif;font-size:40px;font-weight:800;color:var(--gray)}
 .freq-unit{font-size:18px;font-weight:600;color:var(--gray-mid);margin-left:3px}
-.freq-dots{display:flex;gap:7px;justify-content:center;margin:14px 0}
+.freq-dots{display:flex;gap:7px;justify-content:center;margin:12px 0}
 .fdot{width:11px;height:11px;border-radius:50%;background:var(--border);transition:all .3s}
 .fdot.done{background:var(--success)}
 .fdot.cur{background:var(--red);transform:scale(1.35)}
-.retry-bar{display:flex;gap:7px;justify-content:center;min-height:22px;margin:8px 0}
+.retry-bar{display:flex;gap:7px;justify-content:center;min-height:22px;margin:6px 0}
 .retry-dot{width:14px;height:14px;border-radius:50%;background:var(--border);transition:all .3s}
 .retry-dot.heard{background:var(--success)}
 .retry-dot.missed{background:var(--red)}
 .retry-dot.cur{background:#ddd;border:2.5px solid var(--red)}
-.toast-wrap{text-align:center;min-height:32px;margin:4px 0}
-.status-toast{display:inline-block;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;opacity:0;transition:opacity .3s}
+.toast-wrap{text-align:center;min-height:30px;margin:4px 0}
+.status-toast{display:inline-block;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;opacity:0;transition:opacity .3s}
 .status-toast.show{opacity:1}
 .status-toast.down{background:var(--success-light);color:var(--success)}
 .status-toast.up{background:#fff3e0;color:#b26a00}
 .status-toast.info{background:var(--gray-light);color:var(--gray-mid)}
-.wave-wrap{display:flex;align-items:center;justify-content:center;gap:5px;height:60px;margin:16px 0}
+.wave-wrap{display:flex;align-items:center;justify-content:center;gap:5px;height:56px;margin:14px 0}
 .w-bar{width:5px;border-radius:3px;background:var(--red);height:5px;opacity:.2}
 .w-bar.on{opacity:1;animation:wv .7s ease-in-out infinite alternate}
-@keyframes wv{from{height:6px}to{height:48px}}
+@keyframes wv{from{height:6px}to{height:46px}}
 .w-bar:nth-child(1){animation-delay:0s}.w-bar:nth-child(2){animation-delay:.08s}
 .w-bar:nth-child(3){animation-delay:.16s}.w-bar:nth-child(4){animation-delay:.08s}
-.w-bar:nth-child(5){animation-delay:0s}.w-bar:nth-child(6){animation-delay:.12s}
-.w-bar:nth-child(7){animation-delay:.04s}
-.play-btn{width:80px;height:80px;border-radius:50%;border:none;background:var(--red);color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:all .2s;box-shadow:0 6px 20px rgba(204,30,30,.35)}
+.w-bar:nth-child(5){animation-delay:0s}.w-bar:nth-child(6){animation-delay:.12s}.w-bar:nth-child(7){animation-delay:.04s}
+.play-btn{width:78px;height:78px;border-radius:50%;border:none;background:var(--red);color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;transition:all .2s;box-shadow:0 6px 20px rgba(204,30,30,.35)}
 .play-btn:hover{transform:scale(1.06)}
 .play-btn.on{background:#3d3d3d;box-shadow:0 6px 20px rgba(0,0,0,.2)}
-.play-hint{font-size:12px;color:var(--gray-mid);text-align:center;margin-bottom:16px}
-.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-.resp-btn{padding:18px;border-radius:12px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px}
-.resp-btn .ri{font-size:26px}
+.play-hint{font-size:12px;color:var(--gray-mid);text-align:center;margin-bottom:14px}
+.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.resp-btn{padding:17px;border-radius:12px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px}
+.resp-btn .ri{font-size:24px}
 .resp-btn.yes{border-color:#b8e0cc;color:var(--success)}
 .resp-btn.yes:hover{background:var(--success);color:#fff;border-color:var(--success)}
 .resp-btn.no{border-color:#e8e8e8;color:#aaa}
 .resp-btn.no:hover{background:#f0f0f0;color:#666}
 .resp-btn:disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
 
-/* ── SONUÇ ── */
+/* ════ SONUÇ ════ */
 .result-hero{text-align:center;padding:28px 20px;border-radius:12px;margin:20px 0;border:2px solid}
 .result-hero.good{border-color:#4db896;background:var(--success-light)}
 .result-hero.moderate{border-color:#e8a045;background:var(--warning-light)}
@@ -121,7 +134,7 @@ input:focus,select:focus{border-color:var(--red)}
 .legend-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0}
 .ref-sounds-section{margin:18px 0}
 .ref-sounds-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:var(--gray);margin-bottom:10px}
-.ref-sounds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(85px,1fr));gap:8px}
+.ref-sounds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
 .ref-sound-card{background:var(--gray-light);border-radius:10px;padding:10px 6px;text-align:center;border:1px solid var(--border);position:relative}
 .ref-sound-card.missed{background:#fff0f0;border-color:#f0c0c0}
 .ref-sound-icon{font-size:22px;margin-bottom:3px}
@@ -132,11 +145,10 @@ input:focus,select:focus{border-color:var(--red)}
 .advice-box{border-left:3px solid var(--red);background:#fff8f8;padding:14px 16px;border-radius:0 8px 8px 0;font-size:14px;color:var(--gray);line-height:1.7;margin:16px 0}
 .disclaimer{font-size:11px;color:#aaa;text-align:center;margin-top:20px;line-height:1.6}
 footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#aaa}
-@media(max-width:600px){.card{padding:28px 20px}h1{font-size:24px}.form-row{grid-template-columns:1fr}header{padding:0 16px}.phone-text{display:none}.ref-sounds-grid{grid-template-columns:repeat(3,1fr)}.freq-value{font-size:30px}}
+@media(max-width:600px){.card{padding:28px 20px}h1{font-size:24px}.form-row{grid-template-columns:1fr}header{padding:0 16px}.phone-text{display:none}.hp-grid{grid-template-columns:1fr 1fr}.ref-sounds-grid{grid-template-columns:repeat(3,1fr)}.freq-value{font-size:30px}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo-wrap">
     <img src="LOGO.png" alt="" style="height:44px;object-fit:contain" onerror="this.style.display='none'">
@@ -145,10 +157,9 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
   <a href="tel:+902121234567" class="phone-link">📞 <span class="phone-text">0212 XXX XX XX</span></a>
 </header>
 <div class="progress-wrap"><div class="progress-fill" id="progressBar"></div></div>
-
 <main>
 
-<!-- EKRAN 1: KARŞILAMA -->
+<!-- ══ S1: KARŞILAMA ══ -->
 <div class="screen active" id="s1">
   <div class="card">
     <div class="hero-icon">🎧</div>
@@ -166,10 +177,10 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
   </div>
 </div>
 
-<!-- EKRAN 2: KİŞİSEL BİLGİLER -->
+<!-- ══ S2: KİŞİSEL BİLGİLER ══ -->
 <div class="screen" id="s2">
   <div class="card">
-    <div class="step-label">Adım 1 / 4 — Bilgiler</div>
+    <div class="step-label">Adım 1 / 5 — Bilgiler</div>
     <h2>Kişisel bilgileriniz</h2>
     <p>Sonuçlarınızı kişiselleştirmek için birkaç kısa soru.</p>
     <div class="form-row">
@@ -194,32 +205,143 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
   </div>
 </div>
 
-<!-- EKRAN 3: HAZIRLIK -->
+<!-- ══ S3: KULAKLÍK SEÇİMİ ══ -->
 <div class="screen" id="s3">
   <div class="card">
-    <div class="step-label">Adım 2 / 4 — Hazırlık</div>
+    <div class="step-label">Adım 2 / 5 — Kulaklık Tipi</div>
+    <h2>Kulaklığınız hangisine benziyor?</h2>
+    <p style="margin-bottom:8px">Test kalibrasyonu kulaklık tipine göre ayarlanır. Lütfen kullandığınız modeli seçin.</p>
+
+    <div class="hp-grid" id="hpGrid">
+
+      <!-- TİP 1: Kulak İçi Silikonlu IEM -->
+      <div class="hp-card" onclick="selectHP('iem')" id="hp-iem">
+        <div class="hp-svg-wrap">
+          <svg viewBox="0 0 100 90" width="90" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kulak -->
+            <ellipse cx="62" cy="45" rx="22" ry="28" fill="#f5deb3" stroke="#c4a882" stroke-width="1.5"/>
+            <path d="M62 22 Q75 35 72 45 Q70 52 65 55 Q60 58 58 52 Q56 46 60 43 Q64 40 63 35 Q62 28 58 28 Q52 24 55 18 Q58 14 62 22Z" fill="#e8c89a" stroke="#c4a882" stroke-width="1"/>
+            <!-- IEM gövde -->
+            <ellipse cx="44" cy="48" rx="11" ry="8" fill="#3a3a3a" stroke="#222" stroke-width="1.5" transform="rotate(-20,44,48)"/>
+            <ellipse cx="44" cy="48" rx="7" ry="5" fill="#555" transform="rotate(-20,44,48)"/>
+            <!-- Silikon tip -->
+            <ellipse cx="52" cy="43" rx="5" ry="6" fill="#b0b0b0" stroke="#888" stroke-width="1" transform="rotate(-20,52,43)"/>
+            <ellipse cx="52" cy="43" rx="3" ry="4" fill="#d0d0d0" transform="rotate(-20,52,43)"/>
+            <!-- Kablo -->
+            <path d="M34 50 Q20 55 15 70 Q12 78 10 82" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="50" y="85" text-anchor="middle" font-size="8" fill="#888">Silikonlu IEM</text>
+          </svg>
+        </div>
+        <div class="hp-title">Kulak İçi Silikonlu</div>
+        <div class="hp-sub">AirPods Pro, Sony WF-1000, Samsung Buds Pro gibi uçlu/silikonlu modeller</div>
+        <span class="hp-badge good">En iyi izolasyon</span>
+      </div>
+
+      <!-- TİP 2: Kubbesiz Earbud (AirPods klasik) -->
+      <div class="hp-card" onclick="selectHP('earbud')" id="hp-earbud">
+        <div class="hp-svg-wrap">
+          <svg viewBox="0 0 100 90" width="90" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kulak -->
+            <ellipse cx="62" cy="45" rx="22" ry="28" fill="#f5deb3" stroke="#c4a882" stroke-width="1.5"/>
+            <path d="M62 22 Q75 35 72 45 Q70 52 65 55 Q60 58 58 52 Q56 46 60 43 Q64 40 63 35 Q62 28 58 28 Q52 24 55 18 Q58 14 62 22Z" fill="#e8c89a" stroke="#c4a882" stroke-width="1"/>
+            <!-- AirPods kapsül gövde -->
+            <rect x="34" y="38" width="18" height="14" rx="7" fill="white" stroke="#ccc" stroke-width="1.5"/>
+            <circle cx="43" cy="45" r="4" fill="#eee" stroke="#bbb" stroke-width="1"/>
+            <!-- Sap -->
+            <rect x="39" y="52" width="8" height="16" rx="4" fill="white" stroke="#ccc" stroke-width="1.5"/>
+            <!-- Kablo yok - wireless -->
+            <text x="50" y="85" text-anchor="middle" font-size="8" fill="#888">Kablosuz Earbud</text>
+          </svg>
+        </div>
+        <div class="hp-title">Kablosuz Earbud</div>
+        <div class="hp-sub">AirPods (1/2/3), Galaxy Buds Live gibi kulağa oturan, sapsız/saplı modeller</div>
+        <span class="hp-badge fair">Açık tasarım</span>
+      </div>
+
+      <!-- TİP 3: Kafa üstü kulağı tam kavrayan Over-ear -->
+      <div class="hp-card" onclick="selectHP('overear')" id="hp-overear">
+        <div class="hp-svg-wrap">
+          <svg viewBox="0 0 100 90" width="95" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kafa bandı -->
+            <path d="M20 35 Q50 5 80 35" stroke="#444" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Sol kulak kaseti (büyük, kulağı sarar) -->
+            <ellipse cx="20" cy="50" rx="14" ry="18" fill="#555" stroke="#333" stroke-width="1.5"/>
+            <ellipse cx="20" cy="50" rx="10" ry="13" fill="#888"/>
+            <ellipse cx="20" cy="50" rx="6" ry="8" fill="#333"/>
+            <!-- Sağ kulak kaseti -->
+            <ellipse cx="80" cy="50" rx="14" ry="18" fill="#555" stroke="#333" stroke-width="1.5"/>
+            <ellipse cx="80" cy="50" rx="10" ry="13" fill="#888"/>
+            <ellipse cx="80" cy="50" rx="6" ry="8" fill="#333"/>
+            <text x="50" y="85" text-anchor="middle" font-size="8" fill="#888">Kulağı kavrayan</text>
+          </svg>
+        </div>
+        <div class="hp-title">Kafa Üstü — Over-Ear</div>
+        <div class="hp-sub">Sony WH-1000, Bose QC45, Sennheiser HD gibi kulağı tamamen kavrayan modeller</div>
+        <span class="hp-badge good">En iyi bass</span>
+      </div>
+
+      <!-- TİP 4: On-ear supra-aural -->
+      <div class="hp-card" onclick="selectHP('onear')" id="hp-onear">
+        <div class="hp-svg-wrap">
+          <svg viewBox="0 0 100 90" width="95" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kafa bandı -->
+            <path d="M22 32 Q50 8 78 32" stroke="#444" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Sol kaseti küçük, kulak üstünde oturuyor -->
+            <ellipse cx="22" cy="48" rx="10" ry="12" fill="#555" stroke="#333" stroke-width="1.5"/>
+            <ellipse cx="22" cy="48" rx="6.5" ry="8" fill="#888"/>
+            <ellipse cx="22" cy="48" rx="3.5" ry="4.5" fill="#333"/>
+            <!-- Sağ -->
+            <ellipse cx="78" cy="48" rx="10" ry="12" fill="#555" stroke="#333" stroke-width="1.5"/>
+            <ellipse cx="78" cy="48" rx="6.5" ry="8" fill="#888"/>
+            <ellipse cx="78" cy="48" rx="3.5" ry="4.5" fill="#333"/>
+            <!-- Kulak çizgisi (kulağın üstünde küçük kaseti göster) -->
+            <ellipse cx="22" cy="48" rx="13" ry="16" fill="none" stroke="#f5deb3" stroke-width="2" stroke-dasharray="3,2"/>
+            <ellipse cx="78" cy="48" rx="13" ry="16" fill="none" stroke="#f5deb3" stroke-width="2" stroke-dasharray="3,2"/>
+            <text x="50" y="85" text-anchor="middle" font-size="8" fill="#888">Kulak üstü oturan</text>
+          </svg>
+        </div>
+        <div class="hp-title">Kafa Üstü — On-Ear</div>
+        <div class="hp-sub">Marshall Major, Urbanears, Beats Solo gibi kulak üstüne oturan modeller</div>
+        <span class="hp-badge ok">Orta izolasyon</span>
+      </div>
+
+    </div>
+
+    <div class="info-box" id="hpInfo" style="display:none"></div>
+
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="goTo(2)">← Geri</button>
+      <button class="btn btn-red" id="btnHpNext" onclick="goTo(4)" disabled style="opacity:.4;cursor:not-allowed">Devam Et →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S4: HAZIRLIK ══ -->
+<div class="screen" id="s4">
+  <div class="card">
+    <div class="step-label">Adım 3 / 5 — Hazırlık</div>
     <h2>Teste başlamadan önce</h2>
     <ul class="checklist">
       <li><span class="chk">🔇</span> Etrafınızdaki sesleri azaltın</li>
-      <li><span class="chk">🎧</span> Kulaklığınız takılıysa sağ/sol doğru olsun</li>
+      <li><span class="chk">🎧</span> Kulaklığınızı doğru şekilde takın</li>
       <li><span class="chk">🔊</span> Ses seviyenizi <strong>%100'e (maksimuma)</strong> ayarlayın</li>
       <li><span class="chk">📵</span> Telefonunuzu sessiz moduna alın</li>
     </ul>
     <div class="info-box" style="font-size:13px">
       <strong>Test nasıl işler?</strong><br>
-      ▶ butonuna basın, sesi dinleyin, ardından duyup duymadığınızı belirtin. Sistem yanıtınıza göre ses şiddetini otomatik ayarlar ve kişisel işitme eşiğinizi hassas biçimde belirler. Frekansları göreceksiniz; ses şiddeti bilgisi gösterilmez.
+      ▶ butonuna basın, sesi dinleyin, ardından yanıtlayın. Sistem yanıtınıza göre ses seviyesini otomatik ayarlar. <strong>Frekanslar görünür; ses şiddeti bilgisi gösterilmez.</strong>
     </div>
     <div class="btn-row">
-      <button class="btn btn-outline" onclick="goTo(2)">← Geri</button>
+      <button class="btn btn-outline" onclick="goTo(3)">← Geri</button>
       <button class="btn btn-red" onclick="startTest()">🎧 Testi Başlat</button>
     </div>
   </div>
 </div>
 
-<!-- EKRAN 4: TEST -->
-<div class="screen" id="s4">
+<!-- ══ S5: TEST ══ -->
+<div class="screen" id="s5">
   <div class="card" style="text-align:center">
-    <div class="step-label" style="justify-content:center">Adım 3 / 4 — Ses Testi</div>
+    <div class="step-label" style="justify-content:center">Adım 4 / 5 — Ses Testi</div>
     <div class="ear-row">
       <div class="ear-btn" id="rEar"><div class="ear-icon">👂</div><div class="ear-label">Sağ Kulak</div></div>
       <div class="ear-btn" id="lEar"><div class="ear-icon">👂</div><div class="ear-label">Sol Kulak</div></div>
@@ -231,7 +353,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
     <div class="freq-dots" id="freqDots"></div>
     <div class="retry-bar" id="retryBar"></div>
     <div class="toast-wrap"><span class="status-toast" id="statusToast"></span></div>
-    <div class="wave-wrap" id="waveWrap">
+    <div class="wave-wrap">
       <div class="w-bar"></div><div class="w-bar"></div><div class="w-bar"></div>
       <div class="w-bar"></div><div class="w-bar"></div><div class="w-bar"></div><div class="w-bar"></div>
     </div>
@@ -244,10 +366,10 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
   </div>
 </div>
 
-<!-- EKRAN 5: SONUÇ -->
-<div class="screen" id="s5">
+<!-- ══ S6: SONUÇ ══ -->
+<div class="screen" id="s6">
   <div class="card">
-    <div class="step-label">Sonuçlarınız</div>
+    <div class="step-label">Adım 5 / 5 — Sonuçlarınız</div>
     <h2>Test Tamamlandı 🎉</h2>
     <div id="resultMain"></div>
     <div class="meters" id="meters"></div>
@@ -266,54 +388,98 @@ footer{background:#fff;border-top:1px solid var(--border);padding:16px 32px;disp
 <footer><span>© 2025 Algı İşitme Cihazları</span><span>Bu test bilgilendirme amaçlıdır</span></footer>
 
 <script>
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 // KONFİGÜRASYON
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+
 const FREQS = [250,500,1000,2000,4000,6000,8000];
 const FLBLS = ['250 Hz','500 Hz','1 kHz','2 kHz','4 kHz','6 kHz','8 kHz'];
 
-// Şiddet basamakları: indeks 0 = en yüksek, 4 = en alçak
+// Şiddet basamakları: index 0 = en yüksek, 4 = en alçak
 const DB_STEPS = [80, 65, 50, 35, 20];
+const START_IDX = 1; // 65 dB'den başla
 
-// Gain kalibrasyonu — sistem sesi %100 iken hedef dB HL karşılıkları
-// Her 20 dB için genlik 10x değişir (logaritmik).
-// Headphone'da kalibre edilmiş değerler:
-const DB_GAINS = {
+// ════════════════════════════════════════════════════════════
+// KULAKLÍK TİPİ KALİBRASYONU
+//
+// Literatür temeli (Voss & Herrmann 2005; ISO 389; ANSI S3.6):
+//
+// IEM (kulak içi silikonlu):
+//   Küçük kanal hacmi → yüksek verimlilik → standart gain yeterli.
+//   Düşük frekanslarda (250–500 Hz) extra bass kazanımı var → gain biraz düşürülür.
+//
+// Earbud (kubbesiz, açık): 
+//   Zayıf seal → 250 Hz'de ~10 dB, 500 Hz'de ~6 dB kayıp.
+//   Gain bu kadarlık artırılmalı.
+//
+// Over-ear (kulağı kavrayan, closed-back referans):
+//   6cc coupler standardı — referans gain.
+//
+// On-ear (supra-aural):
+//   Orta seal → 250 Hz'de ~5 dB, 500 Hz'de ~3 dB kayıp.
+//   Gain biraz artırılır.
+//
+// Format: { DB_STEPS[i]: gainMultiplier_per_freq }
+// Temel gainler aşağıda; kalibrasyon bunlara çarpan olarak uygulanır.
+// ════════════════════════════════════════════════════════════
+
+// Temel gain değerleri (%100 ses, over-ear referans)
+const BASE_GAINS = {
   80:  0.022,
-  65:  0.004,
-  50:  0.0007,
-  35:  0.00012,
-  20:  0.00002
+  65:  0.0042,
+  50:  0.00075,
+  35:  0.000130,
+  20:  0.000022
 };
 
-// Her frekansta başlangıç indeksi: DB_STEPS[1] = 65 dB
-const START_IDX = 1;
+// Kulaklık tipi başına frekans düzeltme çarpanları
+// Her frekans için bir çarpan [250,500,1k,2k,4k,6k,8k]
+const HP_CALIBRATION = {
+  iem: {
+    // IEM: düşük frekanslarda kanal hacmi etkisiyle küçük boost var → gain %20 azalt
+    // Yüksek frekanslarda (4k+) insertion gain etkisiyle biraz artıyor → normal tut
+    freqMult: [0.80, 0.85, 1.0, 1.0, 1.0, 1.0, 1.0],
+    label: 'Kulak İçi Silikonlu IEM',
+    note: 'Silikonlu uç kulak kanalını kapatır — en hassas ölçüm için ideal.'
+  },
+  earbud: {
+    // Earbud: zayıf seal → düşük frekanslarda kayıp yüksek
+    // 250 Hz +10 dB, 500 Hz +6 dB, 1k +3 dB telafisi gerekir
+    freqMult: [3.16, 2.0, 1.41, 1.0, 1.0, 0.9, 0.85],
+    label: 'Kablosuz Earbud (Açık Tasarım)',
+    note: 'Açık tasarım nedeniyle düşük frekans kayıpları telafi edildi. Test odası sessiz olmalı.'
+  },
+  overear: {
+    // Over-ear: referans — 6cc coupler standardı, düzeltme yok
+    freqMult: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    label: 'Kafa Üstü Over-Ear (Kulağı Kavrayan)',
+    note: 'Referans kulaklık tipi. En güvenilir düşük frekans ölçümü sağlar.'
+  },
+  onear: {
+    // On-ear: orta seal → 250 Hz +5 dB, 500 Hz +3 dB telafisi
+    freqMult: [1.78, 1.41, 1.15, 1.0, 1.0, 0.95, 0.9],
+    label: 'Kafa Üstü On-Ear (Kulak Üstü Oturan)',
+    note: 'Kulak üstü oturma nedeniyle bas frekanslarda hafif kayıp telafi edildi.'
+  }
+};
 
-// ════════════════════════════════════════════════
-// PROTOKOL AÇIKLAMASI
-// ════════════════════════════════════════════════
-// NORMAL:  65 dB ile başla
-//   Duydu  → bir alt basamak (dbIdx++)
-//   Duymadı → RETRY aşaması, trialRes = [false]
-//
-// RETRY:   aynı basamakta toplamda 3 deneme
-//   3'ün sonunda:
-//   ≥2 duydu → bir alt basamak (dbIdx++)
-//   ≥2 duymadı →
-//     dbIdx > 0 → ASCEND: bir üst basamağa çık (dbIdx--)
-//     dbIdx == 0 → en yüksek eşik → kaydedip sonraki freq
-//
-// ASCEND:  üst basamakta 3 deneme
-//   ≥2 duydu → preAscend seviyesine dön, RETRY tekrar
-//   ≥2 duymadı → bu üst basamağı eşik olarak kaydet
-// ════════════════════════════════════════════════
+const HP_INFO = {
+  iem:     '✅ <strong>Kulak İçi Silikonlu</strong> seçildi. Silikonlu uç iyi bir kanal izolasyonu sağlar — kalibrasyonunuz bu modele göre ayarlandı.',
+  earbud:  '⚠️ <strong>Kablosuz Earbud</strong> seçildi. Açık tasarım düşük frekanslarda zayıf izolasyon sağlar — kalibrasyonumuz bunu telafi etti. Testi mümkün olduğunca sessiz bir ortamda yapın.',
+  overear: '✅ <strong>Over-Ear</strong> seçildi. Kulağı tam kavrayan modeller en güvenilir sonucu verir.',
+  onear:   '✅ <strong>On-Ear</strong> seçildi. Kulak üstüne oturan modeller için kalibrasyon ayarlandı.'
+};
 
+// ════════════════════════════════════════════════════════════
 // DURUM
+// ════════════════════════════════════════════════════════════
 let curScreen = 1;
+let selectedHP = null;
+
 let T = {
   ear:'right', fi:0,
   dbIdx:START_IDX,
-  phase:'normal',    // 'normal'|'retry'|'ascend'
+  phase:'normal',   // 'normal' | 'retry' | 'ascend1'
   trialRes:[],
   ascendRes:[],
   preAscendIdx:null,
@@ -321,12 +487,15 @@ let T = {
   actx:null, osc:null, playing:false
 };
 
+// ════════════════════════════════════════════════════════════
 // NAVİGASYON
+// ════════════════════════════════════════════════════════════
 function goTo(n){
   document.getElementById('s'+curScreen).classList.remove('active');
   curScreen=n;
   document.getElementById('s'+n).classList.add('active');
-  document.getElementById('progressBar').style.width=((n-1)/4*100)+'%';
+  // 6 ekran: her biri 1/5 adım
+  document.getElementById('progressBar').style.width=((n-1)/5*100)+'%';
   window.scrollTo(0,0);
 }
 function selRadio(el,name){
@@ -334,39 +503,52 @@ function selRadio(el,name){
   el.classList.add('sel');el.querySelector('input').checked=true;
 }
 
+// ════════════════════════════════════════════════════════════
+// KULAKLÍK SEÇİMİ
+// ════════════════════════════════════════════════════════════
+function selectHP(type){
+  selectedHP=type;
+  document.querySelectorAll('.hp-card').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('hp-'+type).classList.add('sel');
+  const btn=document.getElementById('btnHpNext');
+  btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';
+  const info=document.getElementById('hpInfo');
+  info.style.display='block';
+  info.innerHTML=HP_INFO[type];
+}
+
+// ════════════════════════════════════════════════════════════
 // TEST BAŞLAT
+// ════════════════════════════════════════════════════════════
 function startTest(){
   T={...T,ear:'right',fi:0,dbIdx:START_IDX,phase:'normal',trialRes:[],ascendRes:[],preAscendIdx:null,
      res:{right:{},left:{}},actx:T.actx,osc:null,playing:false};
   FREQS.forEach(f=>{T.res.right[f]=null;T.res.left[f]=null;});
-  goTo(4); renderUI();
+  goTo(5);renderUI();
 }
-function resetFreq(){ T.dbIdx=START_IDX;T.phase='normal';T.trialRes=[];T.ascendRes=[];T.preAscendIdx=null; }
+function resetFreq(){T.dbIdx=START_IDX;T.phase='normal';T.trialRes=[];T.ascendRes=[];T.preAscendIdx=null;}
 
+// ════════════════════════════════════════════════════════════
 // UI
+// ════════════════════════════════════════════════════════════
 function renderUI(){
   const f=FREQS[T.fi];
   document.getElementById('rEar').classList.toggle('active',T.ear==='right');
   document.getElementById('lEar').classList.toggle('active',T.ear==='left');
   if(f>=1000){document.getElementById('freqValue').textContent=f/1000;document.getElementById('freqUnit').textContent='kHz';}
   else{document.getElementById('freqValue').textContent=f;document.getElementById('freqUnit').textContent='Hz';}
-
-  // Frekans noktaları
   const dd=document.getElementById('freqDots');dd.innerHTML='';
   FREQS.forEach((_,i)=>{
     const d=document.createElement('div');
     d.className='fdot'+(i<T.fi?' done':i===T.fi?' cur':'');
     dd.appendChild(d);
   });
-
-  renderRetryBar();
-  setResp(false);
-  stopTone();
+  renderRetryBar();setResp(false);stopTone();
 }
 
 function renderRetryBar(){
   const bar=document.getElementById('retryBar');bar.innerHTML='';
-  const arr=T.phase==='ascend'?T.ascendRes:T.trialRes;
+  const arr=T.phase==='ascend1'?T.ascendRes:T.trialRes;
   if(T.phase==='normal'&&arr.length===0) return;
   for(let i=0;i<3;i++){
     const d=document.createElement('div');
@@ -388,20 +570,29 @@ function toast(msg,type){
   setTimeout(()=>t.classList.remove('show'),2200);
 }
 
-// SES
-function getCtx(){
+// ════════════════════════════════════════════════════════════
+// SES — KULAKLÍK KALİBRASYONLU
+// ════════════════════════════════════════════════════════════
+function getGain(dbLevel, freqIdx){
+  const base = BASE_GAINS[dbLevel];
+  const mult = HP_CALIBRATION[selectedHP||'overear'].freqMult[freqIdx];
+  return base * mult;
+}
+
+function getAudioCtx(){
   if(!T.actx) T.actx=new (window.AudioContext||window.webkitAudioContext)();
   return T.actx;
 }
+
 function playTone(){
   if(T.playing){stopTone();return;}
-  const c=getCtx();
+  const c=getAudioCtx();
   if(c.state==='suspended') c.resume();
   const osc=c.createOscillator(),gain=c.createGain(),pan=c.createStereoPanner();
   osc.type='sine';
   osc.frequency.value=FREQS[T.fi];
   pan.pan.value=T.ear==='right'?1:-1;
-  const g=DB_GAINS[DB_STEPS[T.dbIdx]];
+  const g=getGain(DB_STEPS[T.dbIdx], T.fi);
   gain.gain.setValueAtTime(0,c.currentTime);
   gain.gain.linearRampToValueAtTime(g,c.currentTime+0.1);
   gain.gain.setValueAtTime(g,c.currentTime+1.5);
@@ -416,6 +607,7 @@ function playTone(){
   setTimeout(()=>setResp(true),500);
   setTimeout(stopTone,2000);
 }
+
 function stopTone(){
   if(T.osc){try{T.osc.stop();T.osc.disconnect();}catch(e){}T.osc=null;}
   T.playing=false;
@@ -424,29 +616,43 @@ function stopTone(){
   document.querySelectorAll('.w-bar').forEach(b=>{b.classList.remove('on');b.style.height='5px';});
 }
 
-// ════════════════════════════════════════════════
-// PROTOKOL MOTORU
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+// ADAPTIF PROTOKOL MOTORU
+// ════════════════════════════════════════════════════════════
+//
+// NORMAL:  65 dB ile başla
+//   Duydu  → bir alt basamak (dbIdx++)
+//   Duymadı → RETRY aşaması, trialRes=[false]
+//
+// RETRY:  toplamda 3 deneme (ilk dahil)
+//   3/3 sonunda:
+//   ≥2 duydu → bir alt basamak
+//   ≥2 duymadı → bir üst basamağa çık (ASCEND1)
+//                 Üstte 1 kez test et → duyarsa o seviye eşik
+//                                     → duymazsa o seviye eşik (zaten üstte)
+//
+// ASCEND1: üst basamakta 1 deneme
+//   Duydu → eşik = bu üst basamak
+//   Duymadı → eşik = bu üst basamak (işitemedi)
+// ════════════════════════════════════════════════════════════
+
 function respond(heard){
   stopTone();setResp(false);
-  if(T.phase==='normal')      doNormal(heard);
-  else if(T.phase==='retry')  doRetry(heard);
-  else if(T.phase==='ascend') doAscend(heard);
+  if(T.phase==='normal')       doNormal(heard);
+  else if(T.phase==='retry')   doRetry(heard);
+  else if(T.phase==='ascend1') doAscend1(heard);
 }
 
 function doNormal(heard){
   if(heard){
-    // Duydu → alt basamak
-    if(T.dbIdx < DB_STEPS.length-1){
+    if(T.dbIdx<DB_STEPS.length-1){
       T.dbIdx++;
       toast('Daha hafif bir ses deneniyor…','down');
       setTimeout(renderUI,700);
     } else {
-      // En alçağı da duydu
       saveThreshold(DB_STEPS[T.dbIdx]);
     }
   } else {
-    // Duymadı → retry
     T.phase='retry';T.trialRes=[false];
     renderRetryBar();
     setTimeout(renderUI,400);
@@ -465,33 +671,22 @@ function doRetry(heard){
       setTimeout(renderUI,700);
     } else { saveThreshold(DB_STEPS[T.dbIdx]); }
   } else {
-    // Çoğunluk duymadı → üst basamağa çık
+    // Çoğunluk duymadı → bir üst basamağa çık, 1 kez test et
     if(T.dbIdx>0){
       T.preAscendIdx=T.dbIdx;
-      T.dbIdx--;  // daha yüksek dB = daha düşük indeks
-      T.phase='ascend';T.ascendRes=[];
+      T.dbIdx--;
+      T.phase='ascend1';T.ascendRes=[];
       toast('Biraz daha yüksek ses deneniyor…','up');
       setTimeout(renderUI,700);
     } else {
-      saveThreshold(DB_STEPS[0]); // en yüksekte bile duyamadı
+      saveThreshold(DB_STEPS[0]);
     }
   }
 }
 
-function doAscend(heard){
-  T.ascendRes.push(heard);renderRetryBar();
-  if(T.ascendRes.length<3){setTimeout(renderUI,400);return;}
-  const ok=T.ascendRes.filter(Boolean).length;
-  if(ok>=2){
-    // Üst basamağı duydu → preAscend seviyesine dön, tekrar retry
-    T.dbIdx=T.preAscendIdx;
-    T.phase='retry';T.trialRes=[];T.ascendRes=[];
-    toast('Tekrar deneniyor…','info');
-    setTimeout(renderUI,700);
-  } else {
-    // Üst basamakta da başarısız → üst basamak eşik
-    saveThreshold(DB_STEPS[T.dbIdx]);
-  }
+function doAscend1(heard){
+  // Tek deneme — duydu ya da duymadı, bu üst basamağı eşik olarak işaretle
+  saveThreshold(DB_STEPS[T.dbIdx]);
 }
 
 function saveThreshold(db){
@@ -510,12 +705,11 @@ function saveThreshold(db){
   setTimeout(renderUI,500);
 }
 
-// ════════════════════════════════════════════════
-// PUANLAMA & SONUÇ
-// ════════════════════════════════════════════════
-function getTh(ear,freq){ const v=T.res[ear][freq]; return(v===null||v===undefined)?65:v; }
-
-function grade(db){ return db<=25?'good':db<=55?'moderate':'poor'; }
+// ════════════════════════════════════════════════════════════
+// PUANLAMA
+// ════════════════════════════════════════════════════════════
+function getTh(ear,freq){const v=T.res[ear][freq];return(v===null||v===undefined)?65:v;}
+function grade(db){return db<=25?'good':db<=55?'moderate':'poor';}
 const LBL={good:'Normal İşitme',moderate:'Hafif–Orta Kayıp',poor:'İleri İşitme Kaybı'};
 const DSC={good:'İşitme eşikleriniz normal sınırlar içinde görünüyor.',moderate:'Bazı frekanslarda işitme güçlüğü tespit edildi.',poor:'Önemli işitme kaybı belirtileri saptandı.'};
 const ADV={
@@ -523,25 +717,29 @@ const ADV={
   moderate:'🟡 Bazı frekanslarda güçlük yaşıyorsunuz. Bir odyoloji uzmanımıza başvurmanızı tavsiye ederiz.',
   poor:'🔴 İşitme kaybı belirtileri tespit edildi. Lütfen en kısa sürede odyoloji uzmanımıza başvurunuz.'
 };
-
 function earPTA(ear){
-  const pf=[500,1000,2000,4000];
-  return Math.round(pf.reduce((a,f)=>a+getTh(ear,f),0)/pf.length);
+  return Math.round([500,1000,2000,4000].reduce((a,f)=>a+getTh(ear,f),0)/4);
 }
 
+// ════════════════════════════════════════════════════════════
+// SONUÇ
+// ════════════════════════════════════════════════════════════
 function showResult(){
-  const rPTA=earPTA('right'), lPTA=earPTA('left');
+  const rPTA=earPTA('right'),lPTA=earPTA('left');
   const avg=Math.round((rPTA+lPTA)/2);
   const g=grade(avg);
   function s(db){return Math.max(0,Math.min(100,Math.round((80-db)/60*100)));}
   const rS=s(rPTA),lS=s(lPTA),aS=Math.round((rS+lS)/2);
+  const hpName=HP_CALIBRATION[selectedHP||'overear'].label;
 
   document.getElementById('resultMain').innerHTML=`
     <div class="result-hero ${g}">
       <div class="score-num ${g}">${aS}%</div>
       <div class="score-lbl">${LBL[g]}</div>
       <p style="margin:0;font-size:14px;color:#666">${DSC[g]}</p>
-    </div>`;
+    </div>
+    <p style="font-size:11px;color:#aaa;text-align:center;margin-top:4px">Kalibrasyon: ${hpName}</p>`;
+
   document.getElementById('meters').innerHTML=`
     <div class="meter-row">
       <div class="meter-top"><span>👂 Sağ Kulak</span><span>Ort. ${rPTA} dB HL</span></div>
@@ -551,28 +749,26 @@ function showResult(){
       <div class="meter-top"><span>👂 Sol Kulak</span><span>Ort. ${lPTA} dB HL</span></div>
       <div class="meter-bar"><div class="meter-fill ${grade(lPTA)}" style="width:${lS}%"></div></div>
     </div>`;
-  buildAudiogram();
-  buildRefSounds();
+
+  buildAudiogram();buildRefSounds();
   document.getElementById('adviceBox').textContent=ADV[g];
-  goTo(5);
+  goTo(6);
 }
 
-// ════════════════════════════════════════════════
-// ODYOGRAFİ (SVG)
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+// ODYOGRAFİ SVG
+// ════════════════════════════════════════════════════════════
 function buildAudiogram(){
   const W=640,H=500,L=72,R=W-52,T_=48,B=H-58,PW=R-L,PH=B-T_;
-  const DBMIN=0,DBMAX=120;
   const FL=[250,500,1000,2000,4000,6000,8000];
   const FLB=['250','500','1k','2k','4k','6k','8k'];
-
   const xP=f=>{const lo=Math.log10(250),hi=Math.log10(8000);return L+((Math.log10(f)-lo)/(hi-lo))*PW;};
-  const yP=db=>T_+((db-DBMIN)/(DBMAX-DBMIN))*PH;
+  const yP=db=>T_+((db-0)/(120-0))*PH;
 
   const bands=[
-    {l:'Normal (≤25)',y0:0, y1:25, f:'#e8f5e9',c:'#2e7d32'},
-    {l:'Hafif (26–40)',y0:25,y1:40, f:'#f9fbe7',c:'#558b2f'},
-    {l:'Orta (41–55)',y0:40,y1:55, f:'#fffde7',c:'#f57f17'},
+    {l:'Normal (≤25)',y0:0,y1:25,f:'#e8f5e9',c:'#2e7d32'},
+    {l:'Hafif (26–40)',y0:25,y1:40,f:'#f9fbe7',c:'#558b2f'},
+    {l:'Orta (41–55)',y0:40,y1:55,f:'#fffde7',c:'#f57f17'},
     {l:'Orta-İleri (56–70)',y0:55,y1:70,f:'#fff3e0',c:'#e65100'},
     {l:'İleri (71–90)',y0:70,y1:90,f:'#fce4ec',c:'#c62828'},
     {l:'Derin (>90)',y0:90,y1:120,f:'#f3e5f5',c:'#6a1b9a'},
@@ -595,20 +791,19 @@ function buildAudiogram(){
     grid+=`<text x="${x}" y="${T_-8}" text-anchor="middle" font-size="11" font-weight="700" fill="#555">${FLB[i]}</text>`;
   });
 
-  // Konuşma muzu
   const bPts=[[250,30],[500,20],[1000,20],[2000,22],[4000,25],[6000,25],[8000,22],
     [8000,50],[6000,48],[4000,50],[2000,55],[1000,55],[500,50],[250,55]]
     .map(([f,d])=>`${xP(f)},${yP(d)}`).join(' ');
 
   const sounds=[
-    {e:'🍃',l:'Yaprak',  f:1000,d:10},{e:'🐦',l:'Kuş',    f:4000,d:10},
-    {e:'💧',l:'Su dam.', f:500, d:20},{e:'🤫',l:'Fısıltı', f:2000,d:28},
-    {e:'🗣️',l:'Konuşma',f:1000,d:42},{e:'📱',l:'Telefon', f:2000,d:42},
-    {e:'🐕',l:'Köpek',  f:500, d:65},{e:'😢',l:'Ağlama',  f:1000,d:60},
-    {e:'🧹',l:'Süpürge',f:2000,d:62},{e:'🎹',l:'Piyano',  f:1000,d:80},
-    {e:'🚛',l:'Kamyon', f:250, d:80},{e:'⚙️',l:'Testere', f:2000,d:100},
-    {e:'🔨',l:'Hilti',  f:250, d:115},{e:'✈️',l:'Uçak',   f:4000,d:115},
-    {e:'🏍️',l:'Moto.',  f:8000,d:100},
+    {e:'🍃',l:'Yaprak',f:1000,d:10},{e:'🐦',l:'Kuş',f:4000,d:10},
+    {e:'💧',l:'Su dam.',f:500,d:20},{e:'🤫',l:'Fısıltı',f:2000,d:28},
+    {e:'🗣️',l:'Konuşma',f:1000,d:42},{e:'📱',l:'Telefon',f:2000,d:42},
+    {e:'🐕',l:'Köpek',f:500,d:65},{e:'😢',l:'Ağlama',f:1000,d:60},
+    {e:'🧹',l:'Süpürge',f:2000,d:62},{e:'🎹',l:'Piyano',f:1000,d:80},
+    {e:'🚛',l:'Kamyon',f:250,d:80},{e:'⚙️',l:'Testere',f:2000,d:100},
+    {e:'🔨',l:'Hilti',f:250,d:115},{e:'✈️',l:'Uçak',f:4000,d:115},
+    {e:'🏍️',l:'Moto.',f:8000,d:100},
   ];
   const sSvg=sounds.map(s=>{
     const x=xP(Math.max(250,Math.min(8000,s.f))),y=yP(Math.min(115,s.d));
@@ -659,9 +854,9 @@ function buildAudiogram(){
     </div>`;
 }
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 // REFERANS SESLER
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 const REF_SOUNDS=[
   {label:'Yaprak hışırtısı',icon:'🍃',freq:1000,db:10},
   {label:'Kuş cıvıltısı',  icon:'🐦',freq:4000,db:10},
