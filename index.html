@@ -88,7 +88,7 @@
   }
 
   /* ── SCREENS ── */
-  .screen { display: none; width: 100%; max-width: 640px; }
+  .screen { display: none; width: 100%; max-width: 720px; }
   .screen.active { display: block; animation: fadeUp 0.35s ease; }
 
   @keyframes fadeUp {
@@ -315,20 +315,21 @@
   /* ── TEST PROGRESS PIPS ── */
   .test-pips {
     display: flex;
-    gap: 5px;
+    gap: 4px;
     justify-content: center;
     margin: 18px 0;
+    flex-wrap: wrap;
   }
-  .pip { width: 28px; height: 3px; border-radius: 2px; background: var(--border); }
+  .pip { width: 18px; height: 3px; border-radius: 2px; background: var(--border); }
   .pip.done { background: var(--success); }
   .pip.cur  { background: var(--red); }
 
-  /* ── FREQ BADGE ── */
+  /* ── FREQ + DB BADGE ── */
   .freq-info {
     text-align: center;
     font-size: 13px;
     color: var(--gray-mid);
-    margin-bottom: 20px;
+    margin-bottom: 8px;
   }
   .freq-badge {
     display: inline-block;
@@ -341,6 +342,49 @@
     font-size: 13px;
     margin-left: 4px;
   }
+  .db-info {
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray-mid);
+    margin-bottom: 16px;
+  }
+  .db-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    margin-left: 4px;
+    border: 1px solid;
+  }
+  .db-badge.db65 { background: #fff3e0; color: #b26a00; border-color: #f0c060; }
+  .db-badge.db40 { background: #e8f4fd; color: #1565a0; border-color: #90caf9; }
+  .db-badge.db20 { background: #edf7f2; color: #1a7a4a; border-color: #90d4b0; }
+
+  /* ── DB LEVEL INDICATOR ── */
+  .db-level-row {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin: 10px 0 18px;
+  }
+  .db-level-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gray-mid);
+  }
+  .db-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: white;
+  }
+  .db-dot.done { background: var(--success); border-color: var(--success); }
+  .db-dot.cur  { background: var(--red); border-color: var(--red); }
 
   /* ── WAVE ── */
   .wave-wrap {
@@ -420,7 +464,7 @@
   /* ── RESULT ── */
   .result-hero {
     text-align: center;
-    padding: 28px 20px;
+    padding: 24px 20px;
     border-radius: 12px;
     margin: 20px 0;
     border: 2px solid;
@@ -431,7 +475,7 @@
 
   .score-num {
     font-family: 'Montserrat', sans-serif;
-    font-size: 72px;
+    font-size: 60px;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 4px;
@@ -468,21 +512,195 @@
   .meter-fill.moderate { background: linear-gradient(90deg, #c47d10, #f0a830); }
   .meter-fill.poor     { background: linear-gradient(90deg, #a51818, #cc1e1e); }
 
-  /* ── FREQ GRID ── */
-  .freq-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  /* ── AUDIOGRAM TABLE ── */
+  .audiogram-section {
+    margin: 24px 0;
+  }
+  .audiogram-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
     gap: 8px;
+  }
+
+  .audiogram-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .audiogram-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 520px;
+  }
+
+  .audiogram-table th {
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+  }
+
+  .audiogram-table th.db-col {
+    background: #f8f8f8;
+    color: var(--gray-mid);
+    width: 70px;
+    text-align: left;
+    padding-left: 12px;
+  }
+  .audiogram-table th.freq-head {
+    background: #f8f8f8;
+    color: var(--gray);
+    min-width: 70px;
+  }
+
+  .audiogram-table td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .audiogram-table td.db-label {
+    font-weight: 700;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 12px;
+    background: #f8f8f8;
+    white-space: nowrap;
+  }
+  .audiogram-table td.db-label.db65-label { color: #b26a00; }
+  .audiogram-table td.db-label.db40-label { color: #1565a0; }
+  .audiogram-table td.db-label.db20-label { color: #1a7a4a; }
+
+  /* Heard cell */
+  .cell-heard {
+    background: #edf7f2;
+    color: var(--success);
+    font-size: 16px;
+  }
+  /* Not heard - normal */
+  .cell-not-heard {
+    background: #fff3f3;
+    color: var(--red);
+    font-size: 16px;
+  }
+  /* Not heard + darkened = below threshold */
+  .cell-shadow {
+    background: #3a0a0a;
+    color: #ff8080;
+    font-size: 16px;
+  }
+  .cell-shadow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(80,0,0,0.55);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  /* Freq sound symbols row */
+  .audiogram-table tr.sound-symbols-row td {
+    background: #f0f7ff;
+    border-top: 2px solid #c0d8f0;
+    padding: 6px 4px;
+  }
+  .audiogram-table tr.sound-symbols-row td.db-label {
+    background: #e8f0fa;
+    font-size: 10px;
+    color: #4a6a90;
+  }
+
+  .sound-symbol-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 10px;
+    color: #4a6a90;
+    font-weight: 600;
+  }
+  .sound-symbol-cell .sym-icon { font-size: 16px; }
+
+  /* ── AUDIOGRAM LEGEND ── */
+  .audiogram-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--gray-mid);
+    align-items: center;
+    justify-content: center;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .legend-dot.heard    { background: #edf7f2; border: 1.5px solid var(--success); }
+  .legend-dot.not-heard { background: #fff3f3; border: 1.5px solid var(--red); }
+  .legend-dot.shadow   { background: #3a0a0a; border: 1.5px solid #600; }
+
+  /* ── REFERENCE SOUNDS ── */
+  .ref-sounds-section {
     margin: 18px 0;
   }
-  .freq-item {
+  .ref-sounds-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .ref-sounds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+  }
+  .ref-sound-card {
     background: var(--gray-light);
     border-radius: 10px;
-    padding: 12px 8px;
+    padding: 10px 6px;
     text-align: center;
+    border: 1px solid var(--border);
+    position: relative;
   }
-  .fi-hz   { font-size: 11px; font-weight: 700; color: var(--gray-mid); margin-bottom: 4px; letter-spacing: 0.5px; }
-  .fi-icon { font-size: 20px; }
+  .ref-sound-card.possibly-missed {
+    background: #fff0f0;
+    border-color: #f0c0c0;
+  }
+  .ref-sound-icon { font-size: 22px; margin-bottom: 3px; }
+  .ref-sound-name { font-size: 10px; font-weight: 700; color: var(--gray); margin-bottom: 2px; }
+  .ref-sound-info { font-size: 9px; color: var(--gray-mid); line-height: 1.4; }
+  .ref-sound-card .missed-tag {
+    display: none;
+    position: absolute;
+    top: -6px; right: -6px;
+    background: var(--red);
+    color: white;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .ref-sound-card.possibly-missed .missed-tag { display: block; }
 
   /* ── ADVICE ── */
   .advice-box {
@@ -521,9 +739,9 @@
     .card { padding: 28px 20px; }
     h1 { font-size: 26px; }
     .form-row { grid-template-columns: 1fr; }
-    .freq-grid { grid-template-columns: repeat(2, 1fr); }
     header { padding: 0 16px; }
     .phone-text { display: none; }
+    .ref-sounds-grid { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
 </head>
@@ -531,7 +749,8 @@
 
 <!-- HEADER -->
 <header>
-  <img src="LOGO.png" alt="Algı İşitme" class="logo-img">
+  <img src="LOGO.png" alt="Algı İşitme" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+  <div style="display:none;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:var(--red)">🎧 Algı İşitme</div>
   <div class="header-right">
     <a href="tel:+902121234567" class="phone-link">
       📞 <span class="phone-text">0212 XXX XX XX</span>
@@ -552,12 +771,12 @@
       <div class="hero-icon">🎧</div>
       <div class="step-label">Ücretsiz Tarama</div>
       <h1>İşitme sağlığınızı<br><span>hemen test edin</span></h1>
-      <p>Bilimsel tabanlı bu ücretsiz tarama testi yaklaşık <strong>5 dakika</strong> sürer ve işitme kaybınız olup olmadığını belirlemenize yardımcı olur.</p>
+      <p>Bilimsel tabanlı bu ücretsiz tarama testi yaklaşık <strong>6–8 dakika</strong> sürer. Her kulak için, her frekansta <strong>3 farklı ses şiddeti</strong> (65 dB · 40 dB · 20 dB) test edilir.</p>
 
       <ul class="checklist">
         <li><span class="chk">✓</span> Sessiz bir ortamda yapın</li>
-        <li><span class="chk">✓</span> Kulaklık veya hoparlör kullanın</li>
-        <li><span class="chk">✓</span> Ses seviyenizi orta düzeye ayarlayın</li>
+        <li><span class="chk">✓</span> Kulaklık kullanmanız önerilir</li>
+        <li><span class="chk">✓</span> Ses seviyenizi %60–70'e ayarlayın</li>
         <li><span class="chk">✓</span> Her iki kulak ayrı ayrı test edilecek</li>
       </ul>
 
@@ -642,7 +861,10 @@
         <li><span class="chk">📵</span> Telefonunuzu sessiz moduna alın</li>
       </ul>
 
-      <p style="margin-top:16px">Önce <strong>sağ kulağınızı</strong> test edeceğiz. Sesi duyduğunuzda <strong>"Evet, Duydum"</strong> butonuna basın.</p>
+      <div class="info-box" style="font-size:13px">
+        <strong>Test nasıl işler?</strong><br>
+        Her frekans için 3 farklı ses şiddeti test edilecek: önce <strong style="color:#b26a00">65 dB</strong> (yüksek), sonra <strong style="color:#1565a0">40 dB</strong> (orta), ardından <strong style="color:#1a7a4a">20 dB</strong> (hafif). Önce <strong>sağ kulağınız</strong>, ardından <strong>sol kulağınız</strong> test edilecek.
+      </div>
 
       <div class="btn-row">
         <button class="btn btn-outline" onclick="goTo(2)">← Geri</button>
@@ -671,6 +893,25 @@
 
       <div class="freq-info">
         Frekans: <span class="freq-badge" id="freqBadge">500 Hz</span>
+      </div>
+      <div class="db-info">
+        Şiddet: <span class="db-badge" id="dbBadge">65 dB</span>
+      </div>
+
+      <!-- dB level indicators -->
+      <div class="db-level-row" id="dbLevelRow">
+        <div class="db-level-dot">
+          <div class="db-dot cur" id="dot65"></div>
+          <span>65 dB</span>
+        </div>
+        <div class="db-level-dot">
+          <div class="db-dot" id="dot40"></div>
+          <span>40 dB</span>
+        </div>
+        <div class="db-level-dot">
+          <div class="db-dot" id="dot20"></div>
+          <span>20 dB</span>
+        </div>
       </div>
 
       <div class="wave-wrap" id="waveWrap">
@@ -708,7 +949,13 @@
       <h2>Test Tamamlandı 🎉</h2>
       <div id="resultMain"></div>
       <div class="meters" id="meters"></div>
-      <div class="freq-grid" id="freqGrid"></div>
+
+      <!-- Audiogram Table -->
+      <div class="audiogram-section" id="audiogramSection"></div>
+
+      <!-- Reference Sounds -->
+      <div class="ref-sounds-section" id="refSoundsSection"></div>
+
       <div class="advice-box" id="adviceBox"></div>
       <div class="btn-row">
         <button class="btn btn-outline" onclick="restartTest()">↺ Tekrar Test</button>
@@ -729,16 +976,47 @@
 </footer>
 
 <script>
+// ────────────────────────────────────────────────
+// TEST CONFIGURATION
+// ────────────────────────────────────────────────
 const FREQS  = [500, 1000, 2000, 4000, 6000, 8000];
 const FLBLS  = ['500 Hz','1 kHz','2 kHz','4 kHz','6 kHz','8 kHz'];
+const DB_LEVELS = [65, 40, 20]; // High → Medium → Low
 
+// Gain values for each dB level (approximate mapping for Web Audio)
+// These are perceptual approximations: 65dB≈0.20, 40dB≈0.04, 20dB≈0.008
+const DB_GAINS = { 65: 0.20, 40: 0.04, 20: 0.008 };
+
+// Reference sounds: { label, icon, freqHz, dbLevel, description }
+const REF_SOUNDS = [
+  { label: 'Hilti',       icon: '🔨', freq: 500,  db: 90,  desc: '~500 Hz / 90 dB' },
+  { label: 'Uçak',        icon: '✈️', freq: 500,  db: 85,  desc: '~500 Hz / 85 dB' },
+  { label: 'Kamyon',      icon: '🚛', freq: 500,  db: 80,  desc: '~500 Hz / 80 dB' },
+  { label: 'Köpek',       icon: '🐕', freq: 1000, db: 70,  desc: '~1 kHz / 70 dB' },
+  { label: 'Konuşma',     icon: '🗣️', freq: 2000, db: 65,  desc: '~2 kHz / 65 dB' },
+  { label: 'Telefon',     icon: '📱', freq: 2000, db: 60,  desc: '~2 kHz / 60 dB' },
+  { label: 'Fısıltı',     icon: '🤫', freq: 2000, db: 30,  desc: '~2 kHz / 30 dB' },
+  { label: 'Kuş',         icon: '🐦', freq: 4000, db: 40,  desc: '~4 kHz / 40 dB' },
+  { label: 'Cırcır böc.', icon: '🦗', freq: 6000, db: 35,  desc: '~6 kHz / 35 dB' },
+  { label: 'Islık',       icon: '😙', freq: 8000, db: 45,  desc: '~8 kHz / 45 dB' },
+];
+
+// ────────────────────────────────────────────────
+// STATE
+// ────────────────────────────────────────────────
 let cur = 1;
 let T = {
-  ear: 'right', fi: 0,
+  ear: 'right',
+  fi: 0,
+  di: 0,   // dB level index
   res: { right: {}, left: {} },
+  // res[ear][freq][db] = true/false
   ctx: null, osc: null, playing: false
 };
 
+// ────────────────────────────────────────────────
+// NAVIGATION
+// ────────────────────────────────────────────────
 function goTo(n) {
   document.getElementById('s'+cur).classList.remove('active');
   cur = n;
@@ -753,34 +1031,66 @@ function selRadio(el, name) {
   el.querySelector('input').checked = true;
 }
 
+// ────────────────────────────────────────────────
+// TEST INIT
+// ────────────────────────────────────────────────
 function startTest() {
-  T.ear='right'; T.fi=0; T.res={right:{},left:{}};
-  goTo(4); updateUI();
+  T.ear='right'; T.fi=0; T.di=0;
+  T.res={ right:{}, left:{} };
+  // Initialize nested objects
+  FREQS.forEach(f => {
+    T.res.right[f] = {};
+    T.res.left[f]  = {};
+  });
+  goTo(4);
+  updateUI();
 }
 
+// ────────────────────────────────────────────────
+// UI UPDATE
+// ────────────────────────────────────────────────
 function updateUI() {
-  const total = FREQS.length * 2;
-  const done  = (T.ear==='right' ? 0 : FREQS.length) + T.fi;
+  const totalSteps = FREQS.length * DB_LEVELS.length * 2;
+  const earOffset  = T.ear === 'right' ? 0 : FREQS.length * DB_LEVELS.length;
+  const done = earOffset + T.fi * DB_LEVELS.length + T.di;
+
   document.getElementById('rEar').classList.toggle('active', T.ear==='right');
   document.getElementById('lEar').classList.toggle('active', T.ear==='left');
   document.getElementById('freqBadge').textContent = FLBLS[T.fi];
 
+  const db = DB_LEVELS[T.di];
+  const dbBadge = document.getElementById('dbBadge');
+  dbBadge.textContent = db + ' dB';
+  dbBadge.className = 'db-badge ' + (db===65?'db65':db===40?'db40':'db20');
+
+  // dB dots
+  ['dot65','dot40','dot20'].forEach((id, idx) => {
+    const d = document.getElementById(id);
+    d.className = 'db-dot';
+    if (idx < T.di) d.classList.add('done');
+    else if (idx === T.di) d.classList.add('cur');
+  });
+
+  // Progress pips
   let p = document.getElementById('pips'); p.innerHTML = '';
-  for(let i=0;i<total;i++){
-    let d=document.createElement('div');
-    d.className='pip'+(i<done?' done':i===done?' cur':'');
+  for(let i=0; i<totalSteps; i++){
+    let d = document.createElement('div');
+    d.className = 'pip' + (i<done?' done':i===done?' cur':'');
     p.appendChild(d);
   }
   stopTone();
 }
 
+// ────────────────────────────────────────────────
+// AUDIO
+// ────────────────────────────────────────────────
 function ctx() {
   if(!T.ctx) T.ctx = new (window.AudioContext||window.webkitAudioContext)();
   return T.ctx;
 }
 
 function playTone() {
-  if(T.playing){stopTone();return;}
+  if(T.playing){ stopTone(); return; }
   const c = ctx();
   if(c.state==='suspended') c.resume();
 
@@ -792,9 +1102,10 @@ function playTone() {
   osc.frequency.value = FREQS[T.fi];
   pan.pan.value = T.ear==='right' ? 1 : -1;
 
+  const g = DB_GAINS[DB_LEVELS[T.di]];
   gain.gain.setValueAtTime(0, c.currentTime);
-  gain.gain.linearRampToValueAtTime(0.15, c.currentTime+0.1);
-  gain.gain.linearRampToValueAtTime(0, c.currentTime+1.8);
+  gain.gain.linearRampToValueAtTime(g, c.currentTime + 0.1);
+  gain.gain.linearRampToValueAtTime(0, c.currentTime + 1.8);
 
   osc.connect(gain); gain.connect(pan); pan.connect(c.destination);
   osc.start(); osc.stop(c.currentTime+2);
@@ -803,7 +1114,10 @@ function playTone() {
   T.osc=osc; T.playing=true;
   document.getElementById('playBtn').textContent='⏹';
   document.getElementById('playBtn').classList.add('on');
-  document.querySelectorAll('.w-bar').forEach((b,i)=>{ b.classList.add('on'); b.style.animationDelay=(i*0.08)+'s'; });
+  document.querySelectorAll('.w-bar').forEach((b,i)=>{
+    b.classList.add('on');
+    b.style.animationDelay=(i*0.08)+'s';
+  });
   setTimeout(stopTone, 2000);
 }
 
@@ -812,31 +1126,80 @@ function stopTone() {
   T.playing=false;
   document.getElementById('playBtn').textContent='▶';
   document.getElementById('playBtn').classList.remove('on');
-  document.querySelectorAll('.w-bar').forEach(b=>{ b.classList.remove('on'); b.style.height='5px'; });
+  document.querySelectorAll('.w-bar').forEach(b=>{
+    b.classList.remove('on');
+    b.style.height='5px';
+  });
 }
 
+// ────────────────────────────────────────────────
+// RESPOND
+// ────────────────────────────────────────────────
 function respond(heard) {
   stopTone();
-  T.res[T.ear][FREQS[T.fi]] = heard;
-  T.fi++;
-  if(T.fi >= FREQS.length) {
-    if(T.ear==='right'){ T.ear='left'; T.fi=0; updateUI(); }
-    else showResult();
-  } else updateUI();
+  const freq = FREQS[T.fi];
+  const db   = DB_LEVELS[T.di];
+  T.res[T.ear][freq][db] = heard;
+
+  // Move to next dB level
+  T.di++;
+  if(T.di >= DB_LEVELS.length) {
+    T.di = 0;
+    T.fi++;
+    if(T.fi >= FREQS.length) {
+      if(T.ear==='right'){ T.ear='left'; T.fi=0; updateUI(); }
+      else showResult();
+      return;
+    }
+  }
+  updateUI();
+}
+
+// ────────────────────────────────────────────────
+// RESULT SCORING
+// ────────────────────────────────────────────────
+// Threshold: the lowest dB the person could hear at this freq.
+// If heard 65dB = "at least 65 dB threshold" (poor)
+// If heard 40dB = threshold around 40 dB (moderate)
+// If heard 20dB = threshold ~20 dB (good)
+// If heard none = threshold above 65 dB (very poor)
+function getThreshold(ear, freq) {
+  const r = T.res[ear][freq];
+  if(r[20]) return 20;
+  if(r[40]) return 40;
+  if(r[65]) return 65;
+  return 80; // did not hear even 65 dB
 }
 
 function grade(s){ return s>=80?'good':s>=50?'moderate':'poor'; }
-const labels = {good:'Mükemmel',moderate:'Orta Düzey',poor:'Zayıf'};
-const descs  = {good:'İşitme sağlığınız genel olarak iyi görünüyor.',moderate:'Bazı frekanslarda güçlük tespit edildi.',poor:'Önemli işitme kaybı belirtileri saptandı.'};
+const labels  = {good:'Mükemmel',moderate:'Orta Düzey',poor:'Zayıf'};
+const descs   = {good:'İşitme sağlığınız genel olarak iyi görünüyor.',moderate:'Bazı frekanslarda güçlük tespit edildi.',poor:'Önemli işitme kaybı belirtileri saptandı.'};
 const advices = {
   good:'🟢 İşitme sağlığınız iyi görünüyor. Yılda bir kez kontrol yaptırmanızı öneririz.',
-  moderate:'🟡 Bazı frekanslarda güçlük yaşıyorsunuz. Uzmanımıza başvurmanızı tavsiye ederiz.',
+  moderate:'🟡 Bazı frekanslarda güçlük yaşıyorsunuz. Bir uzmanımıza başvurmanızı tavsiye ederiz.',
   poor:'🔴 İşitme kaybı belirtileri tespit edildi. Lütfen en kısa sürede odyoloji uzmanımıza başvurunuz.'
 };
 
+// ────────────────────────────────────────────────
+// SHOW RESULT
+// ────────────────────────────────────────────────
 function showResult() {
-  const rS = Math.round(Object.values(T.res.right).filter(Boolean).length / FREQS.length * 100);
-  const lS = Math.round(Object.values(T.res.left).filter(Boolean).length  / FREQS.length * 100);
+  // Score: weighted by dB levels heard. 
+  // Each freq: 0 (heard nothing), 1 (heard 65), 2 (heard 40), 3 (heard 20)
+  // Max per freq = 3, total max = 3 * FREQS.length
+  function earScore(ear) {
+    let total = 0;
+    FREQS.forEach(f => {
+      const r = T.res[ear][f];
+      if(r[20]) total += 3;
+      else if(r[40]) total += 2;
+      else if(r[65]) total += 1;
+    });
+    return Math.round(total / (3 * FREQS.length) * 100);
+  }
+
+  const rS  = earScore('right');
+  const lS  = earScore('left');
   const avg = Math.round((rS+lS)/2);
   const g   = grade(avg);
 
@@ -857,17 +1220,171 @@ function showResult() {
       <div class="meter-bar"><div class="meter-fill ${grade(lS)}" style="width:${lS}%"></div></div>
     </div>`;
 
-  let fg = '';
-  FREQS.forEach((f,i)=>{
-    const rh=T.res.right[f], lh=T.res.left[f];
-    const ic = (rh&&lh)?'✅':(!rh&&!lh)?'❌':'⚠️';
-    fg+=`<div class="freq-item"><div class="fi-hz">${FLBLS[i]}</div><div class="fi-icon">${ic}</div></div>`;
-  });
-  document.getElementById('freqGrid').innerHTML = fg;
+  buildAudiogram();
+  buildRefSounds();
   document.getElementById('adviceBox').textContent = advices[g];
   goTo(5);
 }
 
+// ────────────────────────────────────────────────
+// BUILD AUDIOGRAM TABLE
+// ────────────────────────────────────────────────
+function buildAudiogram() {
+  const ears = [
+    { key:'right', label:'👂 Sağ Kulak' },
+    { key:'left',  label:'👂 Sol Kulak' }
+  ];
+
+  // Reference sounds grouped by freq for the symbols row
+  // We'll show relevant icons at each frequency column header
+  const freqSymbols = {
+    500:  [{icon:'✈️',label:'Uçak'},{icon:'🔨',label:'Hilti'}],
+    1000: [{icon:'🐕',label:'Köpek'},{icon:'🚛',label:'Kamyon'}],
+    2000: [{icon:'🗣️',label:'Konuşma'},{icon:'📱',label:'Telefon'}],
+    4000: [{icon:'🐦',label:'Kuş'}],
+    6000: [{icon:'🦗',label:'Cırcır'}],
+    8000: [{icon:'😙',label:'Islık'}]
+  };
+
+  // dB rows config
+  const dbRows = [
+    { db: 65, cls: 'db65-label', gain: DB_GAINS[65] },
+    { db: 40, cls: 'db40-label', gain: DB_GAINS[40] },
+    { db: 20, cls: 'db20-label', gain: DB_GAINS[20] }
+  ];
+
+  let html = '';
+
+  ears.forEach(ear => {
+    html += `
+      <div class="audiogram-title">📊 ${ear.label} — Frekans / Şiddet Tablosu</div>
+      <div class="audiogram-wrap">
+        <table class="audiogram-table">
+          <thead>
+            <tr>
+              <th class="db-col">Şiddet</th>
+              ${FREQS.map((f,i)=>`<th class="freq-head">${FLBLS[i]}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>`;
+
+    dbRows.forEach((row, di) => {
+      html += `<tr><td class="db-label ${row.cls}">${row.db} dB</td>`;
+
+      FREQS.forEach((freq, fi) => {
+        const heard = T.res[ear.key][freq][row.db];
+        // Determine if this cell is "shadow" (below the threshold = would definitely not hear)
+        // i.e., if user didn't hear 40 dB, they also couldn't hear 20 dB → shadow that 20 dB cell
+        let shadow = false;
+        if (!heard) {
+          // Check if they also failed the level above
+          const higherDbIndex = di - 1;
+          if (higherDbIndex >= 0) {
+            const higherDb = dbRows[higherDbIndex].db;
+            if (!T.res[ear.key][freq][higherDb]) {
+              shadow = true;
+            }
+          }
+        }
+
+        let cls, icon;
+        if (heard) {
+          cls = 'cell-heard'; icon = '✓';
+        } else if (shadow) {
+          cls = 'cell-shadow'; icon = '✗';
+        } else {
+          cls = 'cell-not-heard'; icon = '✗';
+        }
+
+        const title = heard
+          ? `${FLBLS[fi]} / ${row.db} dB — Duyuldu`
+          : shadow
+            ? `${FLBLS[fi]} / ${row.db} dB — Bu bölgeyi duymuyor olabilirsiniz`
+            : `${FLBLS[fi]} / ${row.db} dB — Duyulmadı`;
+
+        html += `<td class="${cls}" title="${title}" style="position:relative">
+          ${shadow ? `<span title="Bu bölgeyi duymuyor olabilirsiniz" style="position:relative;z-index:2;font-size:14px;">${icon}</span>` : icon}
+          ${shadow ? '<div class="warn-overlay"></div>' : ''}
+        </td>`;
+      });
+
+      html += '</tr>';
+    });
+
+    // Symbol row
+    html += `<tr class="sound-symbols-row">
+      <td class="db-label" style="font-size:10px;color:#4a6a90;background:#e8f0fa">Referans Sesler</td>`;
+    FREQS.forEach(freq => {
+      const syms = freqSymbols[freq] || [];
+      html += `<td style="background:#f0f7ff;border-top:2px solid #c0d8f0;padding:6px 4px">
+        <div class="sound-symbol-cell">
+          ${syms.map(s=>`<span title="${s.label}" style="font-size:15px">${s.icon}</span>`).join('')}
+          ${syms.map(s=>`<span style="font-size:9px;color:#4a6a90;font-weight:600">${s.label}</span>`).join('')}
+        </div>
+      </td>`;
+    });
+    html += '</tr>';
+
+    html += `</tbody></table></div>`;
+
+    // Legend
+    html += `
+      <div class="audiogram-legend" style="margin-bottom:20px">
+        <div class="legend-item"><div class="legend-dot heard"></div><span>Duyuldu ✓</span></div>
+        <div class="legend-item"><div class="legend-dot not-heard"></div><span>Duyulmadı ✗</span></div>
+        <div class="legend-item"><div class="legend-dot shadow"></div><span>⚠️ Bu bölgeyi duymuyor olabilirsiniz</span></div>
+      </div>`;
+  });
+
+  document.getElementById('audiogramSection').innerHTML =
+    `<div class="audiogram-title" style="font-size:16px;margin-bottom:16px">📋 Odyogram Tablosu</div>` + html;
+}
+
+// ────────────────────────────────────────────────
+// BUILD REFERENCE SOUNDS
+// ────────────────────────────────────────────────
+function buildRefSounds() {
+  // For each reference sound, determine if person could hear it
+  // based on their threshold at the nearest test frequency
+  function couldHear(refFreq, refDb) {
+    // Find nearest test frequency
+    let nearestFreq = FREQS.reduce((prev, curr) =>
+      Math.abs(curr - refFreq) < Math.abs(prev - refFreq) ? curr : prev
+    );
+
+    // Get threshold for each ear
+    const rThresh = getThreshold('right', nearestFreq);
+    const lThresh = getThreshold('left', nearestFreq);
+    const bestEar = Math.min(rThresh, lThresh);
+
+    return bestEar <= refDb;
+  }
+
+  let html = `<div class="ref-sounds-title">🔊 Günlük Hayat Sesleri</div>
+    <div class="ref-sounds-grid">`;
+
+  REF_SOUNDS.forEach(s => {
+    const canHear = couldHear(s.freq, s.db);
+    html += `
+      <div class="ref-sound-card${canHear?'':' possibly-missed'}">
+        <span class="missed-tag">Riskli</span>
+        <div class="ref-sound-icon">${s.icon}</div>
+        <div class="ref-sound-name">${s.label}</div>
+        <div class="ref-sound-info">${s.desc}</div>
+      </div>`;
+  });
+
+  html += '</div>';
+  html += `<p style="font-size:11px;color:#aaa;margin-top:10px;margin-bottom:0">
+    🔴 "Riskli" olarak işaretlenen sesler, test sonuçlarına göre duyma güçlüğü yaşayabileceğinizi göstermektedir.
+  </p>`;
+
+  document.getElementById('refSoundsSection').innerHTML = html;
+}
+
+// ────────────────────────────────────────────────
+// MISC
+// ────────────────────────────────────────────────
 function restartTest(){ goTo(1); }
 function bookAppt(){
   alert('Randevu almak için:\n📞 0212 XXX XX XX\n\nveya web sitemizi ziyaret edin.');
