@@ -984,8 +984,8 @@ const FLBLS  = ['500 Hz','1 kHz','2 kHz','4 kHz','6 kHz','8 kHz'];
 const DB_LEVELS = [65, 40, 20]; // High → Medium → Low
 
 // Gain values for each dB level (approximate mapping for Web Audio)
-// These are perceptual approximations: 65dB≈0.20, 40dB≈0.04, 20dB≈0.008
-const DB_GAINS = { 65: 0.20, 40: 0.04, 20: 0.008 };
+// Recalibrated: softer overall, preserving relative spacing between levels
+const DB_GAINS = { 65: 0.07, 40: 0.012, 20: 0.002 };
 
 // Reference sounds: { label, icon, freqHz, dbLevel, description }
 const REF_SOUNDS = [
